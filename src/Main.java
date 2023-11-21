@@ -14,8 +14,10 @@ public class Main {
 		// .charAt(pos)				: restituisce il singolo carattere nella posizione pos
 		// .subString(pos)			: restituisce la sottostringa a partire dalla posizione pos
 		// .subString(pos1,pos2)	: restituisce la sottostringa a partire dalla posizione pos1 fino alla pos2 (esclusa)
-		// .indexOf(s1)				: restituisce la posizione della string s1 all'interno della stringa (se esiste), altrimenti -1		
-		
+		// .indexOf(s1)				: restituisce la prima posizione della string s1 all'interno della stringa (se esiste), altrimenti -1		
+		// .lastIndexOf(s1)			: restituisce l'ultima posizione della string s1 all'interno della stringa (se esiste), altrimenti -1		
+		// .repeat(N)				: restituisce la stringa ripetuta N volte
+		// .split(c)				: costruisce un array di stringhe dividendo la stringa originale in pezzi ogni volta che si incontra il carattere c
 		Scanner sc=new Scanner(System.in);
 		String scelta, risposta;
 		HashMap<String,Integer> Candidati=new HashMap<>() {
@@ -26,9 +28,11 @@ public class Main {
 				put("Gino Marroni",0);
 				put("Lino Bianchi",0);
 		}};
+		String r="abc";
 		
+		System.out.println(r.repeat(30));
 		String messaggio="Grazie e arrivederci";
-	
+	    
 		System.out.println("MESSAGGIO ORIGINALE:");
 		System.out.println(messaggio);
 		
@@ -42,7 +46,14 @@ public class Main {
 		for(int i=0;i<messaggio.length();i++)
 			if (i%2==0)
 				System.out.print(messaggio.charAt(i));	
+		
+		System.out.println("\nSOSTITUISCO e CON o:");
+		System.out.println(messaggio.replace("e", "o"));
 					
+		System.out.println("SPLIT");
+		String[] parole=messaggio.split(" ");
+		for(String p:parole)
+			System.out.println(p);
 		String inverted="";
 		System.out.println("\n\nINVERTED:");
 		//inverto la stringa messaggio
@@ -52,7 +63,7 @@ public class Main {
 		
 		System.out.print("\nCosa vuoi cercare all'interno del messaggio?");
 		String cerca=sc.nextLine();
-		int pos=messaggio.indexOf(cerca);
+		int pos=messaggio.lastIndexOf(cerca);
 		if(pos>=0)		//esiste all'interno della stringa
 			System.out.println("Trovato in posizione "+pos);
 		else
